@@ -1,0 +1,50 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+
+const root = path.resolve(import.meta.dirname, '..');
+const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
+const checks = [];
+const check = (name, condition, details = '') => checks.push({ name, passed: Boolean(condition), details });
+
+const backendApp = read('backend/src/app.ts');
+const communication = read('backend/src/modules/communications/communication.service.ts');
+const jarvisService = read('backend/src/modules/jarvis/jarvis.service.ts');
+const internalAuth = read('backend/src/modules/jarvis/jarvis-internal-auth.ts');
+const backendClient = read('jarvis-agent/src/backend-client.ts');
+const agentApp = read('jarvis-agent/src/app.ts');
+const particle = read('frontend/src/features/jarvis/JarvisParticleCore.tsx');
+const jarvisUi = read('frontend/src/features/jarvis/Jarvis.tsx');
+const jarvisCss = read('frontend/src/features/jarvis/jarvis.css');
+const frontendApp = read('frontend/src/App.tsx');
+const main = read('frontend/src/main.tsx');
+const backendTsconfig = JSON.parse(read('backend/tsconfig.json'));
+const backendPackage = JSON.parse(read('backend/package.json'));
+
+check('Backend production build matches start path', backendTsconfig.compilerOptions?.rootDir === 'src' && backendPackage.scripts?.start === 'node dist/server.js');
+check('Backend mounts Jarvis routes', backendApp.includes("app.use('/api/v1/jarvis', jarvisRoutes)"));
+check('Backend mounts internal Jarvis route before global JSON parser', backendApp.indexOf("app.use('/api/v1/internal/jarvis'") < backendApp.indexOf("app.use(express.json"));
+check('Backend mounts inventory routes', backendApp.includes("app.use('/api/v1/inventory', inventoryRoutes)"));
+check('WhatsApp parameters are persisted atomically', communication.includes('parameterValues: input.parameters'));
+check('Expired processing jobs are reclaimable', communication.includes("{ status: 'processing', lockedUntil: { $lt: now } }"));
+check('WhatsApp rechecks reference before sending', communication.includes('assertReferenceCanSend'));
+check('Cancelled reference jobs include processing leases', communication.includes("status: { $in: ['pending', 'processing'] }"));
+check('Prescription draft requires active consultation', jarvisService.includes("if (!session.boundQueueEntryId) throw new AppError(409, 'CONSULTATION_NOT_ACTIVE'"));
+check('Patient code lookup is not capped at 1000 records', jarvisService.includes('PatientModel.aggregate') && !jarvisService.includes('.limit(1000)'));
+check('HMAC canonical contracts match', internalAuth.includes("[req.method.toUpperCase(), requestPath, timestamp, nonce, digest].join('\\n')") && backendClient.includes("['POST', path, timestamp, nonce, digest].join('\\n')"));
+check('Agent CORS uses explicit frontend allowlist', agentApp.includes('JARVIS_ALLOWED_ORIGINS') || read('jarvis-agent/src/env.ts').includes('JARVIS_ALLOWED_ORIGINS'));
+check('ElevenLabs key is server-only', !frontendApp.includes('ELEVENLABS_API_KEY') && !jarvisUi.includes('ELEVENLABS_API_KEY'));
+check('Particle base generation is deterministic', particle.includes('seededRandom') || particle.includes('mulberry32'));
+check('Particle animation does not regenerate random positions', !/Math\.random\s*\(/.test(particle));
+check('Exactly one React Three Fiber Canvas declaration', (particle.match(/<Canvas\b/g) ?? []).length === 1, String((particle.match(/<Canvas\b/g) ?? []).length));
+check('Compact launcher is not a second WebGL canvas', !jarvisUi.slice(jarvisUi.indexOf('export function JarvisLauncher')).includes('<Canvas'));
+check('Jarvis dock uses fixed compact layout', jarvisCss.includes('position: fixed') && jarvisCss.includes('width: min(430px'));
+check('Full-screen Jarvis route exists', frontendApp.includes('path="jarvis"') && frontendApp.includes('<JarvisWorkspace'));
+check('Medicine inventory page exists', frontendApp.includes('Medicine inventory') && frontendApp.includes('<InventoryPage'));
+check('Workspace refresh stylesheet is imported', main.includes("import './experience.css'"));
+check('No real environment file in repair tree', !fs.existsSync(path.join(root, 'backend/.env')) && !fs.existsSync(path.join(root, 'jarvis-agent/.env')) && !fs.existsSync(path.join(root, 'frontend/.env')));
+
+const failures = checks.filter((entry) => !entry.passed);
+for (const entry of checks) console.log(`${entry.passed ? 'PASS' : 'FAIL'}  ${entry.name}${entry.details ? ` (${entry.details})` : ''}`);
+console.log(`\nArchitecture verification: ${checks.length - failures.length}/${checks.length} passed`);
+if (failures.length) process.exit(1);

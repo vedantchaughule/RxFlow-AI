@@ -1,0 +1,4 @@
+.conversation-list small,
+.reception-alerts small {
+  color: var(--text) !important;
+}

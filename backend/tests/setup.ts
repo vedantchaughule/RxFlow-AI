@@ -1,0 +1,10 @@
+﻿process.env.NODE_ENV = 'test';
+process.env.PORT = '5000';
+process.env.MONGODB_URI = 'mongodb://localhost:27017/rxflow_test';
+process.env.JWT_ACCESS_SECRET = 'test-access-secret-that-is-at-least-sixty-four-characters-long-for-validation';
+process.env.JWT_REFRESH_SECRET = 'test-refresh-secret-that-is-at-least-sixty-four-characters-long-for-validation';
+process.env.ENCRYPTION_KEY = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
+process.env.CLIENT_URL = 'http://localhost:5173';
+process.env.CORS_ORIGINS = 'http://localhost:5173';
+process.env.COOKIE_SECURE = 'false';
+process.env.PLATFORM_SUPPORT_KEY = 'test-platform-support-key-that-is-long-enough';

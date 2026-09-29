@@ -1,0 +1,375 @@
+/* 2026 workspace refresh — layered after the original design system. */
+:root {
+  --workspace-max: 1440px;
+  --workspace-gutter: clamp(18px, 3vw, 44px);
+  --surface-glass: color-mix(in srgb, var(--surface) 86%, transparent);
+  --workspace-line: color-mix(in srgb, var(--line) 78%, transparent);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 72% -12%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 38rem),
+    radial-gradient(circle at 8% 88%, color-mix(in srgb, var(--brand) 10%, transparent), transparent 32rem);
+}
+
+.app-shell {
+  grid-template-columns: 270px minmax(0, 1fr);
+  background: transparent;
+}
+
+.app-shell aside {
+  width: 270px;
+  padding: 26px 18px 20px;
+  border-right-color: var(--workspace-line);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface) 88%, var(--bg))),
+    var(--surface);
+  box-shadow: 14px 0 45px color-mix(in srgb, #03130f 7%, transparent);
+  isolation: isolate;
+}
+
+[data-theme="dark"] .app-shell aside {
+  background:
+    radial-gradient(circle at 12% 2%, rgba(37, 204, 181, .08), transparent 18rem),
+    linear-gradient(180deg, rgba(13, 27, 25, .98), rgba(12, 23, 22, .97));
+}
+
+.app-shell aside::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .45;
+  background-image: linear-gradient(rgba(105, 205, 192, .026) 1px, transparent 1px), linear-gradient(90deg, rgba(105, 205, 192, .026) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.app-shell aside .brand {
+  min-height: 46px;
+  padding: 0 9px;
+  font-size: 1.18rem;
+}
+
+.app-shell aside .brand > span {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+.app-shell aside nav {
+  gap: 5px;
+  margin-top: 30px;
+}
+
+.app-shell aside nav a,
+.side-bottom > button {
+  position: relative;
+  min-height: 46px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.app-shell aside nav a:hover {
+  transform: translateX(2px);
+  border-color: color-mix(in srgb, var(--brand) 13%, transparent);
+}
+
+.app-shell aside nav a.active {
+  border-color: color-mix(in srgb, var(--brand) 24%, transparent);
+  background: linear-gradient(110deg, color-mix(in srgb, var(--brand) 17%, var(--surface)), color-mix(in srgb, var(--accent) 6%, var(--surface)));
+  box-shadow: inset 3px 0 0 var(--brand), 0 9px 24px color-mix(in srgb, var(--brand) 9%, transparent);
+}
+
+.app-main {
+  min-width: 0;
+  min-height: 100dvh;
+}
+
+.app-header {
+  height: 72px;
+  padding-inline: var(--workspace-gutter);
+  border-bottom-color: var(--workspace-line);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(20px) saturate(130%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.035), 0 15px 40px color-mix(in srgb, #051613 5%, transparent);
+  z-index: 20;
+}
+
+.search-placeholder {
+  width: min(470px, 55vw);
+  height: 42px;
+  padding-inline: 13px;
+  border-color: color-mix(in srgb, var(--line) 82%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 40%, transparent);
+}
+
+.header-person {
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+}
+
+.page {
+  width: min(100%, var(--workspace-max));
+  max-width: var(--workspace-max);
+  padding: clamp(32px, 4vw, 58px) var(--workspace-gutter) 96px;
+}
+
+.page-heading {
+  margin-bottom: clamp(24px, 3vw, 38px);
+}
+
+.page-heading h1 {
+  max-width: 850px;
+  font-size: clamp(2.25rem, 4vw, 3.65rem);
+  line-height: 1.02;
+}
+
+.page-heading p {
+  max-width: 760px;
+  line-height: 1.65;
+}
+
+.panel,
+.stat,
+.analytics-filters,
+.radar-notice {
+  border-color: var(--workspace-line);
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(115%);
+  box-shadow: 0 18px 54px color-mix(in srgb, #041612 8%, transparent), inset 0 1px 0 color-mix(in srgb, white 30%, transparent);
+}
+
+.panel {
+  overflow: clip;
+}
+
+.stat {
+  position: relative;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.stat::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand), transparent);
+  opacity: .55;
+}
+
+@media (hover:hover) {
+  .stat:hover,
+  .inventory-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--brand) 30%, var(--line));
+    box-shadow: 0 24px 68px color-mix(in srgb, #041612 12%, transparent), inset 0 1px 0 color-mix(in srgb, white 32%, transparent);
+  }
+}
+
+.form-grid input,
+.form-grid textarea,
+.form-grid select,
+.auth-card input,
+.analytics-filters input,
+.analytics-filters select,
+.feedback-request input {
+  border-color: color-mix(in srgb, var(--line) 88%, transparent);
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus,
+.form-grid select:focus,
+.auth-card input:focus,
+.analytics-filters input:focus,
+.analytics-filters select:focus,
+.feedback-request input:focus {
+  border-color: color-mix(in srgb, var(--brand) 65%, var(--line));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 12%, transparent);
+  outline: none;
+}
+
+.button {
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 78%, var(--accent)));
+  box-shadow: 0 13px 28px color-mix(in srgb, var(--brand) 23%, transparent), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Medicine inventory */
+.inventory-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.inventory-summary article {
+  position: relative;
+  min-height: 128px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--workspace-line);
+  border-radius: 20px;
+  background: var(--surface-glass);
+  box-shadow: var(--shadow);
+}
+
+.inventory-summary article::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -28px;
+  bottom: -35px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  filter: blur(4px);
+}
+
+.inventory-summary svg { color: var(--brand); }
+.inventory-summary strong,
+.inventory-summary span { display: block; }
+.inventory-summary strong { margin-top: 18px; font: 700 1.75rem "Space Grotesk"; }
+.inventory-summary span { margin-top: 3px; color: var(--muted); font-size: .72rem; }
+.inventory-summary .warning svg,
+.inventory-summary .warning strong { color: var(--warning); }
+.inventory-summary .danger svg,
+.inventory-summary .danger strong { color: var(--danger); }
+
+.inventory-create-panel { margin-bottom: 20px; }
+.inventory-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.inventory-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 800;
+}
+.inventory-form input,
+.inventory-toolbar input,
+.inventory-toolbar select,
+.inventory-card input {
+  width: 100%;
+  min-height: 43px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+.inventory-form .button { align-self: end; }
+
+.inventory-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.inventory-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-inline: 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface);
+}
+.inventory-search input { border: 0; padding-inline: 0; }
+.inventory-toolbar select { min-width: 150px; }
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+.inventory-card {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--workspace-line);
+  border-radius: 18px;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--surface) 94%, transparent), color-mix(in srgb, var(--surface-soft) 72%, transparent));
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.inventory-card header,
+.inventory-card footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.inventory-card h2 { margin: 0; font-size: 1.05rem; }
+.inventory-card header p { margin: 4px 0 0; color: var(--muted); font-size: .67rem; }
+.inventory-card header > span {
+  flex: none;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 11%, transparent);
+  font-size: .62rem;
+  font-weight: 800;
+}
+.inventory-card header > span[data-status="low_stock"] { color: var(--warning); background: color-mix(in srgb, var(--warning) 11%, transparent); }
+.inventory-card header > span[data-status="out_of_stock"] { color: var(--danger); background: color-mix(in srgb, var(--danger) 11%, transparent); }
+.inventory-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: 17px 0;
+}
+.inventory-card dl > div { min-width: 0; padding: 9px; border-radius: 10px; background: var(--surface-soft); }
+.inventory-card dt { color: var(--muted); font-size: .58rem; }
+.inventory-card dd { margin: 3px 0 0; overflow-wrap: anywhere; font-size: .7rem; font-weight: 800; }
+.inventory-card footer { align-items: end; padding-top: 13px; border-top: 1px solid var(--line); }
+.inventory-card footer > div { display: grid; }
+.inventory-card footer strong { font: 700 1.5rem "Space Grotesk"; color: var(--brand); }
+.inventory-card footer span { color: var(--muted); font-size: .64rem; }
+.inventory-card footer label { display: grid; gap: 4px; width: 100px; color: var(--muted); font-size: .58rem; font-weight: 800; }
+.inventory-card footer input { min-height: 36px; }
+
+@media (max-width: 1120px) {
+  .inventory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inventory-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 800px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .app-shell aside { width: 270px; }
+  .inventory-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .inventory-grid,
+  .inventory-form { grid-template-columns: 1fr; }
+  .inventory-toolbar { align-items: stretch; flex-direction: column; }
+  .inventory-toolbar select { width: 100%; }
+  .inventory-card dl { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 420px) {
+  .inventory-summary { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell aside nav a,
+  .stat,
+  .inventory-card { transition: none; }
+}

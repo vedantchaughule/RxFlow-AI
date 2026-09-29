@@ -1,0 +1,53 @@
+{
+  "health": {
+    "status": 200,
+    "body": {
+      "status": "ok"
+    }
+  },
+  "ready": {
+    "status": 200,
+    "body": {
+      "status": "ready",
+      "provider": "none",
+      "providerConfigured": true,
+      "elevenLabsConfigured": false
+    }
+  },
+  "unauthenticated_message": {
+    "status": 401,
+    "body": {
+      "success": false,
+      "error": {
+        "code": "JARVIS_SESSION_INVALID",
+        "message": "Jarvis session is invalid or expired"
+      }
+    }
+  },
+  "authenticated_help": {
+    "status": 200,
+    "body": {
+      "success": true,
+      "data": {
+        "assistantText": "You can ask me to find a patient, check your queue, search medicine inventory, show low stock, load recent prescriptions, check communication status, or prepare a medicine draft for your review.",
+        "state": "idle",
+        "cards": [
+          {
+            "type": "help",
+            "title": "Jarvis commands",
+            "data": [
+              "Open patient RXF-1042",
+              "How many patients are remaining?",
+              "Search paracetamol 500 mg in inventory",
+              "Show low-stock medicines",
+              "Add paracetamol 500 mg twice daily for five days after food"
+            ]
+          }
+        ],
+        "pendingAction": null,
+        "clientTurnId": "22222222-2222-4222-8222-222222222222"
+      }
+    }
+  },
+  "cors_allow_origin": "http://localhost:5173"
+}

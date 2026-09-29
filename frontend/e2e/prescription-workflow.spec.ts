@@ -1,0 +1,30 @@
+import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
+import { mockAuthenticatedApi } from './support/mock-api';
+
+test('@workflow @a11y doctor composes a queued patient prescription, preserves the draft, and confirms finalization', async ({ page }) => {
+  await mockAuthenticatedApi(page, 'doctor');
+  await page.goto('/app/prescription/new');
+  await expect(page.getByRole('heading', { name: 'New prescription' })).toBeVisible();
+  await page.getByLabel('Active consultation').selectOption('mock-queue');
+  await page.getByLabel('Diagnosis').fill('Clinician-entered diagnosis');
+  await page.getByLabel('Medicine 1 name').fill('Clinician-entered medicine');
+  await page.getByLabel('Medicine 1 dosage').fill('500 mg');
+  await page.getByLabel('Medicine 1 frequency').fill('Twice daily');
+  await page.getByLabel('Medicine 1 duration').fill('5 days');
+  await page.getByRole('button', { name: 'Add medicine' }).click();
+  await page.getByLabel('Medicine 2 name').fill('Second medicine');
+  await page.getByLabel('Medicine 2 dosage').fill('10 mg');
+  await page.getByLabel('Medicine 2 frequency').fill('Once daily');
+  await page.getByLabel('Medicine 2 duration').fill('3 days');
+  await page.getByRole('button', { name: 'Move medicine 2 up' }).click();
+  await page.reload();
+  await expect(page.getByLabel('Diagnosis')).toHaveValue('Clinician-entered diagnosis');
+  await expect(page.getByLabel('Medicine 1 name')).toHaveValue('Second medicine');
+  await expect(page.getByLabel('Clinician review confirmation')).not.toBeChecked();
+  await page.getByLabel('Clinician review confirmation').check();
+  await page.getByRole('button', { name: 'Finalize prescription' }).click();
+  await expect(page.getByRole('heading', { name: 'Prescription finalized' })).toBeVisible();
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations.filter((item) => ['critical', 'serious'].includes(item.impact ?? ''))).toEqual([]);
+});

@@ -1,0 +1,40 @@
+{
+  "health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "timestamp": "2026-08-05T14:32:13.874Z"
+    }
+  },
+  "ready": {
+    "status": 503,
+    "body": {
+      "status": "not_ready",
+      "database": "disconnected"
+    }
+  },
+  "unauthenticated_jarvis_session": {
+    "status": 401,
+    "body": {
+      "success": false,
+      "error": {
+        "code": "UNAUTHENTICATED",
+        "message": "Authentication required"
+      }
+    }
+  },
+  "unauthenticated_inventory": {
+    "status": 401,
+    "body": {
+      "success": false,
+      "error": {
+        "code": "UNAUTHENTICATED",
+        "message": "Authentication required"
+      }
+    }
+  },
+  "cors": {
+    "status": 204,
+    "allowOrigin": "http://localhost:5173"
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "formatVersion": 1,
+  "sourceBaseline": "may10(1).zip",
+  "added": [
+    {
+      "path": "FIX_REPORT.md",
+      "installedSha256": "a0360312801552cc5f50898c27006b4ea44742ee472006d0baf679d3bfef31c7"
+    },
+    {
+      "path": "JARVIS_README.md",
+      "installedSha256": "45707f80ab33497524016e0000a9c1b1f9a79855da2645c5c3dadb9ecdbe61ce"
+    },
+    {
+      "path": "SECURITY_NOTICE.md",
+      "installedSha256": "d671df49d30fc5f6ded6073dadcd159e141ca59b08d91752e74f35b02aca81f3"
+    },
+    {
+      "path": "START_HERE.md",
+      "installedSha256": "fce305f2c27901900571238eb49e90efd4c9df44220d11c4b312c88faa80bf92"
+    },
+    {
+      "path": "TEST_REPORT.md",
+      "installedSha256": "2c90fbd0cffb4b81c9a280f22a90f4f6a5c044f5ffd95ff12331188eb07e648e"
+    },
+    {
+      "path": "backend/src/modules/inventory/inventory.model.ts",
+      "installedSha256": "cf1407bda9e2726f8aa5b82c156701c88bc423c54bc016cade6b79308868ec94"
+    },
+    {
+      "path": "backend/src/modules/inventory/inventory.routes.ts",
+      "installedSha256": "78ea85877923334535a6f3b81f760cae8fbb7852eefbdd0ce9404d1be04c975f"
+    },
+    {
+      "path": "backend/src/modules/inventory/inventory.schemas.ts",
+      "installedSha256": "e6bbe6ef49c26d93fe13e854316c907abd774c1a9d085a7b270047280503c36e"
+    },
+    {
+      "path": "backend/src/modules/inventory/inventory.service.ts",
+      "installedSha256": "b841e3fe2f72611243f28e91f22a4cd0602ccef3cc93d7a5bb8510df1f839016"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis-internal-auth.ts",
+      "installedSha256": "9b9ba588eadf050534daad81d35113749420683e16f79bc96ab2b8ab823e0e4f"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis-internal.routes.ts",
+      "installedSha256": "dc9743af8e12fb010aa05cacfc04aad2788ec756fd3216e8fdef03bb259c8eb8"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis-token.ts",
+      "installedSha256": "cc4de2bd95114e1a8755664945478d6c9eb30483383df791feb72783b5fddaa4"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis.model.ts",
+      "installedSha256": "f0a79fbb9b2598a1b0f735576a64286c1dacd9fe343dcff014778c1fb4b8b98d"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis.routes.ts",
+      "installedSha256": "56c23534afeb83d94f8d80e1a65db6a81a7d25fc0b3cb40e961b092b06125567"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis.schemas.ts",
+      "installedSha256": "5f61301b1075e4ca8a5944e98b07a2071639a9ca2148440b864006cbbaf44f83"
+    },
+    {
+      "path": "backend/src/modules/jarvis/jarvis.service.ts",
+      "installedSha256": "4e99083ecf56bc3e92068d2ca54c9956a2eca382a5cd9b1705b77334ed901b06"
+    },
+    {
+      "path": "backend/tsconfig.test.json",
+      "installedSha256": "7c8a9e762f5db8dd8f54b870537795a035733be0c57931257b9b0b1edf728396"
+    },
+    {
+      "path": "docs/JARVIS_INSTALL.md",
+      "installedSha256": "bf1f674ed969418b63bb7e60dd4521753db1c48f67e87175df2b4b3dd6d2f4ee"
+    },
+    {
+      "path": "docs/JARVIS_UNINSTALL.md",
+      "installedSha256": "8d584faff2162e57f606eb3668c63716ab1771534c7eda2e5566b2b7c0242435"
+    },
+    {
+      "path": "docs/JARVIS_VISUAL_SPEC.md",
+      "installedSha256": "3ee7d8aba2a8eef24bd9e6e5f46211607d448afbbe7e385dfc746642d78598b4"
+    },
+    {
+      "path": "frontend/src/experience.css",
+      "installedSha256": "a51f3f273485597c19c2f55b249de1c37f3020ce236d167b25130c8f2d7cffa1"
+    },
+    {
+      "path": "frontend/src/features/inventory/InventoryPage.tsx",
+      "installedSha256": "11f725c42b0e1eea741b1a2661a60ca76ea4a6dd14968921a9506dff80474f75"
+    },
+    {
+      "path": "frontend/src/features/jarvis/Jarvis.tsx",
+      "installedSha256": "301cb23c77c481fe604592956585bb97f79bc505e6f24ccf5b1c6a1fceca8c33"
+    },
+    {
+      "path": "frontend/src/features/jarvis/JarvisParticleCore.tsx",
+      "installedSha256": "be7af8a9888b36e628bcd72c6fe7d0527025fcee332d93704c5d6e4c18e971c6"
+    },
+    {
+      "path": "frontend/src/features/jarvis/jarvis.css",
+      "installedSha256": "846b4f6c1804029ca18aebd7e3b80e0bf1fa74c935cf10a0912b929d2bdf2f98"
+    },
+    {
+      "path": "frontend/src/features/jarvis/jarvis.types.ts",
+      "installedSha256": "294ad32a1b741b8052345232bbcbac634e80b0d1fe2675f3f757dbe4d041163e"
+    },
+    {
+      "path": "jarvis-agent/.env.example",
+      "installedSha256": "fb70bcec007008f04f2004740f1d423238bcb6573b7235ae67c70abfffc5440e"
+    },
+    {
+      "path": "jarvis-agent/.gitignore",
+      "installedSha256": "56ba0501c8d41bb289aadd625f5f4005e5e3348670230ddcae4be1115755b0a0"
+    },
+    {
+      "path": "jarvis-agent/README.md",
+      "installedSha256": "8cc3bc44cda86ba4163e46eda8591bf6155a5409475b988a443408099c2ffd42"
+    },
+    {
+      "path": "jarvis-agent/package.json",
+      "installedSha256": "29b6a97a45144e22aac63e24e1a6fcedefa584f97dd4b75f50dbdf156c7cdd40"
+    },
+    {
+      "path": "jarvis-agent/scripts/smoke.mjs",
+      "installedSha256": "47081348de602d327e9065f1cf55b532974bd1ee7515d87dac0db9773e487c27"
+    },
+    {
+      "path": "jarvis-agent/src/app.ts",
+      "installedSha256": "7b54c5fec263f53909b4c66f15707b06de069bc02ae6847ee72fd3a09d41cbfb"
+    },
+    {
+      "path": "jarvis-agent/src/auth.ts",
+      "installedSha256": "84f2232df7746623f6359b4e3dfe64642083c460dc90e503fc94d3cd6e0ae651"
+    },
+    {
+      "path": "jarvis-agent/src/backend-client.ts",
+      "installedSha256": "efb4dd10022d7592c4e4d736538339c97c2d7e3a71f170c1b17eb2e97a11f594"
+    },
+    {
+      "path": "jarvis-agent/src/env.ts",
+      "installedSha256": "b0906da73d9bb4cf1d29435d86bcfa7b812417b604ae4619c30170dc5c3a6656"
+    },
+    {
+      "path": "jarvis-agent/src/orchestrator.ts",
+      "installedSha256": "e22ef4474cf613efb6dc9e2cdab68545cdaa19e83e9adbc818627c0d3fd818a2"
+    },
+    {
+      "path": "jarvis-agent/src/parser.ts",
+      "installedSha256": "5f922e0905c1648fb86ea3850c030b8f83c0218194b2deab0c8585da32105a52"
+    },
+    {
+      "path": "jarvis-agent/src/provider.ts",
+      "installedSha256": "261dcc994a20442542c4f838c4d86e3f19af0b4381423950da0f3a6aeedbfbc9"
+    },
+    {
+      "path": "jarvis-agent/src/server.ts",
+      "installedSha256": "db2477d19723d435e2375f38637b13c7eda43841bd381a0d21cf535471cfc9c8"
+    },
+    {
+      "path": "jarvis-agent/src/types.ts",
+      "installedSha256": "a639cb40c7ecf8ecb60dcc45840a1c472974b51a46700611f8283a2866cfdfa9"
+    },
+    {
+      "path": "jarvis-agent/tests/integration/health.test.ts",
+      "installedSha256": "acdd9ec11ce3c7ca740a89c48a6537dc333d0753bf3dd9841eccf51406dcc0da"
+    },
+    {
+      "path": "jarvis-agent/tests/setup/env.ts",
+      "installedSha256": "f9706176c2d6933db563f586f093ba3cf48b2475481395b8828e5e0a00a4637f"
+    },
+    {
+      "path": "jarvis-agent/tests/unit/parser.test.ts",
+      "installedSha256": "5f08daa58479f45365496a3a2d4cbf515b7a7a73f695f3fe42335a692ddef71b"
+    },
+    {
+      "path": "jarvis-agent/tsconfig.json",
+      "installedSha256": "02d72f23dcaec68973882564851b05669f46716736c6fab906daf439b2c8d81d"
+    },
+    {
+      "path": "jarvis-agent/vitest.config.ts",
+      "installedSha256": "2276ab3c3dc37cb285b0458c32c23fa60fd2790c4b7b5bb75c4c5bb7cbbab860"
+    },
+    {
+      "path": "scripts/verify-repair.mjs",
+      "installedSha256": "0943d5c83e1ecb3e153e039bd50116c2a51a1e8127d1d4fc6c382117d14ba07c"
+    }
+  ],
+  "modified": [
+    {
+      "path": "backend/.env.example",
+      "baselineSha256": "c65c6ff5606b4e46902578a972b8a51a318797c1fbf4c9b4323ead2a75317b41",
+      "installedSha256": "e8545b4e8037c4bfa02077de0996b881999b447f3506323fd824ff2062931d8f"
+    },
+    {
+      "path": "backend/package.json",
+      "baselineSha256": "c4aebe246ba7eb7274283fb61934e3fa1c6b39726ff81be7c2c768de44a8a234",
+      "installedSha256": "9f3b691801cf2e392ac2cd6d63b6a38ea85c30d0ee1ad55c3c77152d627108ae"
+    },
+    {
+      "path": "backend/src/app.ts",
+      "baselineSha256": "7dab7e3f132f09c690f6ef4ade4db2535f6684458e9f3978136a3e59d67002c5",
+      "installedSha256": "a5beee5078423f1c770356ddfb592eb5c205347885b1704e5752fdc26bd91596"
+    },
+    {
+      "path": "backend/src/config/env.ts",
+      "baselineSha256": "74687d1ed2ff5a54ced97e7e2bf110a029a8b1517d07cddbbb3f637fc92bfae8",
+      "installedSha256": "7e95456c7729f331478658ea8ac01a944822b25a8505a0eb63af4633b2339ddf"
+    },
+    {
+      "path": "backend/src/modules/communications/communication.service.ts",
+      "baselineSha256": "2ab39af0acde3d325771da02179938a1480192f49453ecfaaae8efb29962c57f",
+      "installedSha256": "3fc240a8d9a8bb6e673c53f8cf763f10e6e5c89ea8b8369c281a0fa7b1ffa499"
+    },
+    {
+      "path": "backend/src/modules/patients/patient.service.ts",
+      "baselineSha256": "9cc2cd3386f702e02fc59f2725b0656368be38763733ac972810f02972b30239",
+      "installedSha256": "a6fb408132e556a4b17a636140140e7a20f5fb36c2a9db72742ecbb469d566f7"
+    },
+    {
+      "path": "backend/src/types/express.d.ts",
+      "baselineSha256": "7444032384f77559fb879816b82865c2edc3fb81d184a2e6f15165eacd6e2fd6",
+      "installedSha256": "3c5a92148b1056f6ec0325b27be675f4547b7dbc1577efe00d369645b1c59575"
+    },
+    {
+      "path": "backend/tsconfig.json",
+      "baselineSha256": "175c1fe7a20d2bd288422de65432f84c1942a88adc16731f597325669105ee0b",
+      "installedSha256": "891ee64548e85e747399c9965bc92ad62d11970695654599aa8c61bbb44f0232"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "baselineSha256": "66fe37db375f56bc5919786b9a219083fce1e325f8c1bf69fa1437ef40d3313f",
+      "installedSha256": "a8af87528ebcedd46595ff982c66c27d757ea34ecc21e03f40cf326d600b3a74"
+    },
+    {
+      "path": "frontend/src/features/prescriptions/PrescriptionEditor.tsx",
+      "baselineSha256": "ff640b216d6add3c4d023558ac980e18e38edb5f050402a30aed24349e881122",
+      "installedSha256": "f6520458f54ececb2b97f190fd43da9b7afb440823bafa57cf7940a6a805ceaf"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "baselineSha256": "d0d640f824b9ca73d94a653551420a281a00344f555b4c0f5a01315901566f8e",
+      "installedSha256": "88b28b6ebe5ddd5f926ffaaa0e5c3fe1474da1f5272133b938e8b111cc0a273d"
+    },
+    {
+      "path": "md/API_Documentation.md",
+      "baselineSha256": "c1553e77329d54fe9b9226fd441b8811cc2cb41d703f682e65ff2a0c1ff08ab6",
+      "installedSha256": "fd1572f317b199e3a34d0c556695125c54fde562ab14f1e9cf8cd007ae7216fd"
+    }
+  ],
+  "removed": []
+}

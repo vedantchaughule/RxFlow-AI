@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+        working-directory: backend
+      - run: npm run typecheck
+        working-directory: backend
+      - run: npm run test:unit
+        working-directory: backend
+      - run: npm run test:integration
+        working-directory: backend
+      - run: npm run build
+        working-directory: backend
+      - run: npm run audit
+        working-directory: backend
+
+  frontend-and-browser:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+      - run: npm ci
+        working-directory: backend
+      - run: npm ci
+        working-directory: frontend
+      - run: npx playwright install chromium
+        working-directory: frontend
+      - run: npm run typecheck
+        working-directory: frontend
+      - run: npm run test:unit
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend
+      - run: npm run test:a11y
+        working-directory: frontend
+      - run: npm run test:visual
+        working-directory: frontend
+      - run: npm run audit
+        working-directory: frontend
